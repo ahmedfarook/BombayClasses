@@ -34,5 +34,14 @@
     "for": "2nd Term",
     "date": "14/12/2025",
     "file": "hasan_2nd Term.jpg"
+  },
+  {
+    "id": 5,
+    "name": "agh",
+    "std": "1",
+    "amt": "1",
+    "for": "1",
+    "date": "14/12/2025",
+    "file": "agh_1.jpg"
   }
 ]
