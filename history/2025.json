@@ -16,5 +16,14 @@
     "for": "1",
     "date": "14/12/2025",
     "file": "Ahmed Gaziyani_1.jpg"
+  },
+  {
+    "id": 3,
+    "name": "g",
+    "std": "4",
+    "amt": "100",
+    "for": "1",
+    "date": "14/12/2025",
+    "file": "g_1.jpg"
   }
 ]
