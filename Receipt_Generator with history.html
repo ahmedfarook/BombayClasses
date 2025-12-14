@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Fees Receipt</title>
+<style>
+body { font-family: Arial, sans-serif; background:#f2f4f8; padding:20px; }
+.container { max-width:600px; margin:auto; background:#fff; padding:20px; border-radius:15px; box-shadow:0 4px 20px rgba(0,0,0,0.1);} 
+h2 { text-align:center; }
+label { display:block; margin-top:10px; font-weight:bold; }
+input, select { width:100%; padding:10px; margin-top:5px; border-radius:8px; border:1px solid #bbb; }
+.error { border:2px solid red !important; background:#ffeaea; }
+.btn-row { display:flex; justify-content:space-between; margin-top:15px; }
+button { flex:1; margin:4px; padding:10px; background:#111; color:#fff; border:none; border-radius:8px; font-size:14px; cursor:pointer; }
+.receipt { margin-top:30px; padding:20px; background:#fff; border-radius:12px; border:1px solid #ccc; }
+.title { font-size:22px; font-weight:bold; text-align:center; }
+.line { margin:6px 0; font-size:15px; }
+.history-card { padding:10px; margin-top:8px; border-radius:8px; background:#fafafa; border:1px solid #ddd; }
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h1 style='text-align:center;margin:0;'>BOMBAY COACHING CLASSES</h1>
+    <div style='text-align:center;font-size:14px;'>G101, Ashiyana Complex, Adajan Patiya, Surat</div>
+    <div style='text-align:center;font-size:14px;'>Contact: 9819484931</div>
+    <hr>
+
+    <h2>Fees Receipt</h2>
+
+    <label>Student Name</label>
+    <input type="text" id="name" />
+
+    <label>Amount (INR)</label>
+    <input type="number" id="amount" />
+
+    <label>Payment For</label>
+    <input type="text" id="paymentfor" />
+
+    <label>Std</label>
+    <input type="text" id="standard" />
+
+    <label>Mode of Payment</label>
+    <select id="mode">
+        <option value="Cash">Cash</option>
+        <option value="UPI">UPI</option>
+        <option value="Bank Transfer">Bank Transfer</option>
+        <option value="Cheque">Cheque</option>
+    </select>
+
+    <label>Note</label>
+    <input type="text" id="note" />
+
+    <div class="btn-row">
+        <button onclick="generate()">Generate</button>
+        <button onclick="downloadJPG()">JPG</button>
+        <button onclick="printReceipt()">Print</button>
+        <button onclick="openHistory()">History</button>
+    </div>
+
+    <div id="receipt" class="receipt" style="display:none;"></div>
+    <div id="historyPanel" style="display:none;margin-top:20px;"></div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script>
+// GitHub Upload Config
+const GH_USER = "ahmedfarook";
+const GH_REPO = "BombayClasses";
+const GH_FOLDER = "receipts";
+const GH_HISTORY = "history";
+const GH_TOKEN = "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"; // <-- ADD YOUR TOKEN
+
+function generate() {
+    let fields = ['name','amount','paymentfor','standard'];
+    let ok = true;
+
+    fields.forEach(id=>{
+        let el=document.getElementById(id);
+        if(!el.value.trim()){ el.classList.add('error'); ok=false; }
+        else el.classList.remove('error');
+    });
+    if(!ok){ alert('Fill required fields'); return; }
+
+    let dateStr = new Date().toLocaleDateString('en-GB');
+
+    let html = `
+        <div class='title'>BOMBAY COACHING CLASSES</div>
+        <div style='text-align:center;'>G101, Ashiyana Complex, Adajan Patiya, Surat</div>
+        <div style='text-align:center;'>Contact: 9819484931</div>
+        <hr>
+        <div class='line'><b>Date:</b> ${dateStr}</div>
+        <div class='line'><b>Student:</b> ${document.getElementById('name').value}</div>
+        <div class='line'><b>Standard:</b> ${document.getElementById('standard').value}</div>
+        <div class='line'><b>Payment For:</b> ${document.getElementById('paymentfor').value}</div>
+        <div class='line'><b>Amount:</b> INR ${document.getElementById('amount').value}</div>
+        <div class='line'><b>Mode:</b> ${document.getElementById('mode').value}</div>
+        <div class='line'><b>Note:</b> ${document.getElementById('note').value}</div>
+        <br><b>Thank you!</b>`;
+
+    receipt.innerHTML = html;
+    receipt.style.display = 'block';
+}
+
+// SAVE JPG + UPLOAD + SAVE HISTORY
+function downloadJPG() {
+    if(receipt.style.display==='none'){ alert('Generate first'); return; }
+
+    html2canvas(receipt).then(canvas => {
+        let fileName = `${document.getElementById('name').value}_${document.getElementById('paymentfor').value}.jpg`;
+        let imgData = canvas.toDataURL('image/jpeg').split(',')[1];
+        uploadToGitHub(imgData, fileName);
+        downloadLocal(canvas, fileName);
+    });
+}
+
+function downloadLocal(canvas, fileName){
+    let a = document.createElement('a');
+    a.download = fileName;
+    a.href = canvas.toDataURL('image/jpeg');
+    a.click();
+}
+
+async function uploadToGitHub(base64, fileName){
+    let url = `https://api.github.com/repos/${GH_USER}/${GH_REPO}/contents/${GH_FOLDER}/${fileName}`;
+
+    await fetch(url,{
+        method:"PUT",
+        headers:{"Authorization":`Bearer ${GH_TOKEN}`},
+        body:JSON.stringify({ message:"upload", content:base64 })
+    });
+
+    saveHistory(fileName);
+}
+
+async function saveHistory(fileName){
+    let year = new Date().getFullYear();
+    let path = `https://api.github.com/repos/${GH_USER}/${GH_REPO}/contents/${GH_HISTORY}/${year}.json`;
+
+    let list = [];
+    let sha = null;
+
+    let r = await fetch(path,{headers:{ "Authorization":`Bearer ${GH_TOKEN}` }});
+
+    if(r.status === 200){
+        let d = await r.json();
+        sha = d.sha;
+        list = JSON.parse(atob(d.content));
+    }
+
+    list.push({ id:list.length+1, name:document.getElementById('name').value, std:document.getElementById('standard').value, amt:document.getElementById('amount').value, for:document.getElementById('paymentfor').value, date:new Date().toLocaleDateString('en-GB'), file:fileName });
+
+    await fetch(path,{
+        method:"PUT",
+        headers:{"Authorization":`Bearer ${GH_TOKEN}`},
+        body:JSON.stringify({ message:"history update", content:btoa(JSON.stringify(list,null,2)), sha:sha })
+    });
+
+    alert("Uploaded + History Updated ✔");
+}
+
+function printReceipt(){
+    if(receipt.style.display==='none'){ alert('Generate first'); return; }
+    let w=window.open('', '_blank');
+    w.document.write(`<html><body>${receipt.outerHTML}</body></html>`);
+    w.document.close(); w.print(); w.close();
+}
+
+async function openHistory(){
+    let year = new Date().getFullYear();
+    let url = `https://raw.githubusercontent.com/${GH_USER}/${GH_REPO}/main/${GH_HISTORY}/${year}.json`;
+
+    let panel=document.getElementById('historyPanel');
+    panel.innerHTML = "<b>Loading...</b>";
+    panel.style.display="block";
+
+    let r = await fetch(url);
+    let data = await r.json();
+
+    let html = `<h3>${year} - History</h3>`;
+    data.forEach(x=>{
+        html += `<div class='history-card'>
+            <b>${x.id}. ${x.name} (Std ${x.std})</b><br>
+            Amount: ₹${x.amt}<br>
+            For: ${x.for}<br>
+            Date: ${x.date}<br>
+            <a href='https://raw.githubusercontent.com/${GH_USER}/${GH_REPO}/main/${GH_FOLDER}/${x.file}' target='_blank'>Open Receipt</a>
+        </div>`;
+    });
+
+    panel.innerHTML = html;
+}
+</script>
+</body>
+</html>
