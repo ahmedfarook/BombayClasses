@@ -79,5 +79,15 @@
     "for": "Second semester ",
     "date": "15/12/2025",
     "file": "Alina Memon_Second semester .jpg"
+  },
+  {
+    "id": 10,
+    "name": "1",
+    "std": "1",
+    "amt": "100",
+    "for": "1",
+    "PaymentMode": "Cash",
+    "date": "15/12/2025",
+    "file": "1_1.jpg"
   }
 ]
