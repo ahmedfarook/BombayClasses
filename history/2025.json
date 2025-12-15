@@ -43,5 +43,14 @@
     "for": "1",
     "date": "14/12/2025",
     "file": "agh_1.jpg"
+  },
+  {
+    "id": 6,
+    "name": "Aara Memon",
+    "std": "9",
+    "amt": "5000",
+    "for": "3rd Instalment ",
+    "date": "15/12/2025",
+    "file": "Aara Memon_3rd Instalment .jpg"
   }
 ]
