@@ -99,5 +99,15 @@
     "PaymentMode": "Cash",
     "date": "15/12/2025",
     "file": "Imran Bhai_Itna Hai Ki Yaad Nahi.jpg"
+  },
+  {
+    "id": 12,
+    "name": "Ayyan Memon",
+    "std": "7th and 9th",
+    "amt": "9000",
+    "for": "1st Instalment ",
+    "PaymentMode": "UPI",
+    "date": "16/12/2025",
+    "file": "Ayyan Memon_1st Instalment .jpg"
   }
 ]
