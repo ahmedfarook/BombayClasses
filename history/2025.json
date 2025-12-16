@@ -109,5 +109,15 @@
     "PaymentMode": "UPI",
     "date": "16/12/2025",
     "file": "Ayyan Memon_1st Instalment .jpg"
+  },
+  {
+    "id": 13,
+    "name": "Zainab Dandhala",
+    "std": "10",
+    "amt": "10000",
+    "for": "2nd Instalment ",
+    "PaymentMode": "UPI",
+    "date": "16/12/2025",
+    "file": "Zainab Dandhala_2nd Instalment .jpg"
   }
 ]
