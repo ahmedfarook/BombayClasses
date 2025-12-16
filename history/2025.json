@@ -119,5 +119,15 @@
     "PaymentMode": "UPI",
     "date": "16/12/2025",
     "file": "Zainab Dandhala_2nd Instalment .jpg"
+  },
+  {
+    "id": 14,
+    "name": "Ahmed Raza Kandoi",
+    "std": "9",
+    "amt": "5000",
+    "for": "1st Instalment ",
+    "PaymentMode": "Cash",
+    "date": "16/12/2025",
+    "file": "Ahmed Raza Kandoi_1st Instalment .jpg"
   }
 ]
