@@ -169,5 +169,15 @@
     "PaymentMode": "UPI",
     "date": "17/12/2025",
     "file": "Muhammad Pothiawala _2nd semester .jpg"
+  },
+  {
+    "id": 19,
+    "name": "Furqan / Ahmed Raza Ajari",
+    "std": "12",
+    "amt": "24000",
+    "for": "Second semester ",
+    "PaymentMode": "UPI",
+    "date": "17/12/2025",
+    "file": "Furqan / Ahmed Raza Ajari_Second semester .jpg"
   }
 ]
