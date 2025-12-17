@@ -179,5 +179,15 @@
     "PaymentMode": "UPI",
     "date": "17/12/2025",
     "file": "Furqan / Ahmed Raza Ajari_Second semester .jpg"
+  },
+  {
+    "id": 20,
+    "name": "Rehan Motiwala",
+    "std": "8",
+    "amt": "4500",
+    "for": "3rd Instalment ",
+    "PaymentMode": "UPI",
+    "date": "17/12/2025",
+    "file": "Rehan Motiwala_3rd Instalment .jpg"
   }
 ]
