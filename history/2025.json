@@ -139,5 +139,15 @@
     "PaymentMode": "Cash",
     "date": "17/12/2025",
     "file": "Fatima Kaludi_2nd Semester .jpg"
+  },
+  {
+    "id": 16,
+    "name": "Makkiya Vapiwala",
+    "std": "7",
+    "amt": "4000",
+    "for": "3rd Instalment ",
+    "PaymentMode": "Cash",
+    "date": "17/12/2025",
+    "file": "Makkiya Vapiwala_3rd Instalment .jpg"
   }
 ]
