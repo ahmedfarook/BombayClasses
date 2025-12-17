@@ -149,5 +149,15 @@
     "PaymentMode": "Cash",
     "date": "17/12/2025",
     "file": "Makkiya Vapiwala_3rd Instalment .jpg"
+  },
+  {
+    "id": 17,
+    "name": "Muhammad Pothiawala ",
+    "std": "11",
+    "amt": "11000",
+    "for": "2nd semester ",
+    "PaymentMode": "UPI",
+    "date": "17/12/2025",
+    "file": "Muhammad Pothiawala _2nd semester .jpg"
   }
 ]
