@@ -129,5 +129,15 @@
     "PaymentMode": "Cash",
     "date": "16/12/2025",
     "file": "Ahmed Raza Kandoi_1st Instalment .jpg"
+  },
+  {
+    "id": 15,
+    "name": "Fatima Kaludi",
+    "std": "9",
+    "amt": "10000",
+    "for": "2nd Semester ",
+    "PaymentMode": "Cash",
+    "date": "17/12/2025",
+    "file": "Fatima Kaludi_2nd Semester .jpg"
   }
 ]
