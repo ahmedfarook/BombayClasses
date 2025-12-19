@@ -189,5 +189,15 @@
     "PaymentMode": "UPI",
     "date": "17/12/2025",
     "file": "Rehan Motiwala_3rd Instalment .jpg"
+  },
+  {
+    "id": 21,
+    "name": "Madani/Halima Motiwala",
+    "std": "4",
+    "amt": "9000",
+    "for": "2nd Instalment ",
+    "PaymentMode": "Cash",
+    "date": "19/12/2025",
+    "file": "Madani/Halima Motiwala_2nd Instalment .jpg"
   }
 ]
