@@ -199,5 +199,15 @@
     "PaymentMode": "Cash",
     "date": "19/12/2025",
     "file": "Madani/Halima Motiwala_2nd Instalment .jpg"
+  },
+  {
+    "id": 22,
+    "name": "Khadija/Huda Ghodi",
+    "std": "12/9",
+    "amt": "22000",
+    "for": "2nd Semester ",
+    "PaymentMode": "Cash",
+    "date": "19/12/2025",
+    "file": "Khadija/Huda Ghodi_2nd Semester .jpg"
   }
 ]
