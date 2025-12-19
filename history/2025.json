@@ -219,5 +219,15 @@
     "PaymentMode": "UPI",
     "date": "19/12/2025",
     "file": "Amena Dhankwala_Second semester .jpg"
+  },
+  {
+    "id": 24,
+    "name": "Amena Dhankwala",
+    "std": "10",
+    "amt": "11000",
+    "for": "Second semester ",
+    "PaymentMode": "UPI",
+    "date": "19/12/2025",
+    "file": "Amena Dhankwala_Second semester .jpg"
   }
 ]
