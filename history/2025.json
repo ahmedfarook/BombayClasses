@@ -229,5 +229,15 @@
     "PaymentMode": "UPI",
     "date": "19/12/2025",
     "file": "Amena Dhankwala_Second semester .jpg"
+  },
+  {
+    "id": 25,
+    "name": "Rumaiza Bidiwala",
+    "std": "9",
+    "amt": "10000",
+    "for": "Second semester ",
+    "PaymentMode": "UPI",
+    "date": "20/12/2025",
+    "file": "Rumaiza Bidiwala_Second semester .jpg"
   }
 ]
